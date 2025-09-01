@@ -3,11 +3,9 @@ from tkinter import messagebox
 
 user_credentials = {}
 def show_login_window():
-    """Fecha a janela de registro e abre a janela de login."""
     register_window.destroy()
     create_login_window()
 def register_user():
-    """Registra um novo usuário."""
     username = entry_username_register.get()
     password = entry_password_register.get()
     confirm_password = entry_confirm_password.get()
@@ -17,7 +15,6 @@ def register_user():
     elif password != confirm_password:
         messagebox.showerror("Erro de Registro", "As senhas não correspondem.")
         return
-
     elif username in user_credentials:
         messagebox.showerror("Erro de Registro", "Este nome de usuário já existe.")
         return
@@ -27,15 +24,12 @@ def register_user():
 def login_user():
     username = entry_username_login.get()
     password = entry_password_login.get()
-
     if username in user_credentials and user_credentials[username] == password:
         messagebox.showinfo("Login", "Login realizado com sucesso!")
         login_window.destroy()
     else:
         messagebox.showerror("Erro de Login", "Nome de usuário ou senha inválidos.")
-
 def create_register_window():
-    """Cria a janela de registro."""
     global register_window, entry_username_register, entry_password_register, entry_confirm_password
     
     register_window = tk.Tk()
